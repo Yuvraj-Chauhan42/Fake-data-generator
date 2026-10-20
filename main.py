@@ -7,15 +7,26 @@ print("Enter 3 for RUSSIA")
 print("Enter 4 for JAPAN")
 print("Enter 5 for UNITED STATE")
 print("Enter 6 for CHINA")
-region=int(input("enter region : "))
-enter=int(input("Enter how much rows you want : "))
+try:
+    region=int(input("enter region : "))
+except ValueError:
+    print("Choose a valid region")
+    exit()
+try:
+    enter=int(input("Enter how much rows you want : "))
+except ValueError:
+    print("Please enter a valid whole number")
+    exit()
+if enter <=0:
+    print("Please enter a positive value")
+    exit()
 regions={
-    1:("en_IN"),
-    2:("id_ID"),
-    3:("ru_RU"),
-    4:("ja_JP"),
-    5:("en_US"),
-    6:("zh_CN")
+    1:"en_IN",
+    2:"id_ID",
+    3:"ru_RU",
+    4:"ja_JP",
+    5:"en_US",
+    6:"zh_CN"
 }
 if region  not in regions:
     print("Invalid region!")
@@ -35,4 +46,4 @@ data={
 }
 df=pd.DataFrame(data)
 df.to_excel("fake_data.xlsx",index=False)
-print("Data is save successfully!")
+print("Data save successfully!")
